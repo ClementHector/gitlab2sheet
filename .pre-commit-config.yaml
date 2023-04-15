@@ -8,7 +8,6 @@ repos:
   hooks:
     - id: pytest-check
       name: pytest-check
-      # entry: pytest
       language: system
       entry: poetry run python -m pytest
       pass_filenames: false
