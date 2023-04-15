@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "gitlab2sheet"
+version = "0.1.0"
+description = "This project allows you to track issues in all GitLab projects with the assignee, labels, epic and spent time."
+authors = ["clement.hector <clement.hector@fixstudio.com>"]
+license = "Apache License V2.0"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+functions-framework = "^3.3.0"
+pandas = "^2.0.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^3.2.2"
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
