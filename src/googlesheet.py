@@ -1,5 +1,7 @@
+from typing import List, Optional, Dict
 import logging
 import pandas as pd
+from pandas import DataFrame
 import numpy as np
 import pygsheets
 import os
@@ -11,8 +13,7 @@ current_directory = os.path.split(path_to_current_file)[0]
 
 log = logging.getLogger(__name__)
 
-
-def url_exists(target_url, urls):
+def url_exists(target_url: str, urls: List[str]) -> bool:
     """
     Checks if a target URL exists in a list of URLs.
 
@@ -34,7 +35,7 @@ class SpreadsheetController:
     A class allowing to handle updating Google Sheets with data from a Pandas DataFrame.
     """
 
-    def __init__(self, data=None):
+    def __init__(self, data: Optional[Dict] = None):
         """
         Initializes the Spreadsheet object.
 
@@ -55,7 +56,7 @@ class SpreadsheetController:
         self._spreadsheet = None
         self.issue = Issue(data)
 
-    def open(self, title="test-gitlab"):
+    def open(self, title: str = "test-gitlab") -> bool:
         """
         Opens a spreadsheet in Google Sheets by its title.
 
@@ -84,12 +85,12 @@ class SpreadsheetController:
             return False
         return True
 
-    def get_dataframe(self):
+    def get_dataframe(self) -> DataFrame:
         """Return current dataframe of first worksheet"""
         worksheet = self._spreadsheet.worksheet()
         return worksheet.get_as_df()
 
-    def update(self):
+    def update(self) -> bool:
         """
             Update of the spreadsheet with the insertion of the outcome data from issue event
 
